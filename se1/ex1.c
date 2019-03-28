@@ -20,7 +20,7 @@ string_size_to_whitespace(char *str, int tab_size)
 	char c = str[i];
 	int size = 0;
 
-	/* we get the size of the string with the spaces */
+	/* we get the size of the string with the spaces in place */
 	while (c != '\0') {
 		if (c == '\t') {
 			size += tab_size - (i % tab_size);
