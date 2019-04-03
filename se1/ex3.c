@@ -8,50 +8,53 @@
 
 /* union type to store value and interchange  value */
 typedef union {
-    int inum,
-    float fnum
+	int inum;
+	float fnum;
 } Float;
 
 int
 string_int(char *string, long *number)
 {
-    int exp = 0;
-    int decimal = 0;
-    long *number = 0;
-    char c;
-    
-    while (c = string[exp] != 0) {
-        if (c == ',' || c == '.') {
-            decimal = 1;
-            continue;
-        }
-        
-        *number = (*number * 10) + (c - '0');
-        if (decimal) {+
-            exp++;
-        }
-    }
-    
-    return exp;
+	int exp = 0;
+	int decimal = 0;
+	char c;
+
+	while ((c = string[exp]) != 0) {
+		if (c == ',' || c == '.') {
+			decimal = 1;
+			continue;
+		}
+
+		*number = (*number * 10) + (c - '0');
+		if (decimal) {
+			exp++;
+		}
+	}
+
+	return exp;
 }
 
 float
 string_to_float(char *string)
 {
+	float number = 0;
     // convert string to int
-    long *number;
-    int exp = string_int(string, number);
-    
+
     // shift int to bin for validate
-    
+
     // convert bin to signal, expoent, mantissa
- 
-    // save    
-}    
+
+    // save
+
+	return number;
+}
 
 int
 main(int argc, char *argv[])
 {
     /* code */
-    return 0;
+	char string[] = "33.635";
+	printf("%f", string_to_float(string));
+
+	return 0;
 }
