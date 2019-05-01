@@ -8,13 +8,13 @@
 /* study help on IEEE 754:
  * https://en.wikipedia.org/wiki/Single-precision_floating-point_format
  * https://www.h-schmidt.net/FloatConverter/IEEE754.html
-*/
+ */
 #include <stdio.h>
 
 
 #define NUMBER_DEC 4
 
-typedef struct {
+typedef struct pscfloat {
 	unsigned int sign: 1;		/* 0 => positive, 1 => negative */
 	unsigned int exponent: 8;	/* 2^exponent  */
 	unsigned int mantissa: 23;
