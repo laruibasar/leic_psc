@@ -1,9 +1,10 @@
-/*
+/*-
  * SPDX-License-Identifier: BSD-3-Clause
  *
  * Copyright (c) 2019 Luis Bandarra <luis.bandarra@homestudio.pt>
  * All rights reserved.
  */
+
 #include <stdio.h>
 
 #define DEFAULT_TAB_SIZE 4
@@ -32,30 +33,31 @@ string_size_to_whitespace(char *str, int tab_size)
 	return size;
 }
 
-/* 
+/*
  * Function to solve exercise 1 of SE 1
  * receive a string and tab size and change the \t to whitspace
  */
 void
 string_detab(char *string, int tab_size)
 {
-	// discover the real size of the string 
-	int size = string_size_to_whitespace(string, tab_size);
+	    // discover the real size of the string
+	    int size = string_size_to_whitespace(string, tab_size);
 
-	/* we get a new string where we will insert the spaces */
-	char new_string[size];
+	    /* we get a new string where we will insert the spaces */
+	    char new_string[size];
 
-	for (int i = 0, j = 0; i < size; j++) {
-		if (string[j] == '\t') {
-			for (int m = 0; m < (tab_size - (i % tab_size)); m++) {
-				new_string[i++] = ' ';
-			}
-		} else {
-			new_string[i++] = string[j];
-		}
-	}
+	    for (int i = 0, j = 0; i < size; j++) {
+		        if (string[j] == '\t') {
+			            // for (int k = 0; k < (tab_size - (i % tab_size)); k++) {
+                        for (int k = 0; k <= tab_size; k++) {
+				                new_string[i++] = ' ';
+			            }
+		        } else {
+			            new_string[i++] = string[j];
+                }
+        }
 
-	printf("\n%s\n%s\n", new_string, string);
+        strcpy(string, new_string);
 }
 
 int

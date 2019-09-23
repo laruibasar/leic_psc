@@ -1,0 +1,1 @@
+https://github.com/grzegorz-kraszewski/stringtofloat/blob/master/str2dbl.c

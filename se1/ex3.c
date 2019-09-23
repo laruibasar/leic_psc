@@ -1,4 +1,4 @@
-/*
+/*-
  * SPDX-License-Identifier: BSD-3-Clause
  *
  * Copyright (c) 2019 Luis Bandarra <luis.bandarra@homestudio.pt>
@@ -9,6 +9,7 @@
  * https://en.wikipedia.org/wiki/Single-precision_floating-point_format
  * https://www.h-schmidt.net/FloatConverter/IEEE754.html
  */
+
 #include <stdio.h>
 
 

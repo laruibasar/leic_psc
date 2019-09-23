@@ -1,12 +1,13 @@
-/*
+/*-
  * SPDX-License-Identifier: BSD-3-Clause
  *
  * Copyright (c) 2019 Luis Bandarra <luis.bandarra@homestudio.pt>
  * All rights reserved.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
-/* 
+/*
  * INT_BIT sets the dimension of the data stored in a data set
  * occuping 1 ints (32 bits)
  */
@@ -46,7 +47,7 @@ vgetbits(unsigned int data[],
 	/* check for out of range request */
 	check_dimension(idx, idx + len);
 
-	/* 
+	/*
 	 * If we are only on one index of the array, the index and index + len
 	 * is equal, we can use the same ideia for get the bits
 	 */
@@ -105,7 +106,7 @@ vgetbits(unsigned int data[],
  * we send in the arguments.
  * We can have two situations:
  * 1. the interval to change is in the same dataset (general rule)
- * 
+ *
  * 2. the interval cross two datasets (special case)
  *    In this case we need to make two passes with diferent lenghts
  */
@@ -126,7 +127,7 @@ vsetbits(unsigned int data[],
 	/* check for out of range request */
 	check_dimension(idx, idx_end);
 
-	/* 
+	/*
 	 * General rule
 	 */
 	if ((idx / INT_BITS) == ((idx_end) / INT_BITS)) {
@@ -138,7 +139,7 @@ vsetbits(unsigned int data[],
 		 * and shift to the position */
 		mask = (~(~0 << aux_len)) << index;
 
-		/* we shift the value to the position and apply the ~mask 
+		/* we shift the value to the position and apply the ~mask
 		 * so we have the value we want surrounded by 1s
 		 */
 		aux_val = (val << index) | ~mask;
@@ -149,8 +150,8 @@ vsetbits(unsigned int data[],
 		data[idx / INT_BITS] = (data[idx / INT_BITS] | mask) & aux_val;
 		printf("%x\t%x\n", data[1], data[0]);
 	} else {
-		/* 
-		 * Special case: 
+		/*
+		 * Special case:
 		 * we have to go to both indexes of the array
 		 * so we ajust the lenght to the value to match the dataset
 		 */
@@ -165,7 +166,7 @@ vsetbits(unsigned int data[],
 		/* we set the mask */
 		mask = (~(~0 << aux_len)) << index;
 
-		/* we shift the value to the position and apply the ~mask 		 
+		/* we shift the value to the position and apply the ~mask
 		 * so we have the value we want surrounded by 1s
 		 */
 		aux_val = (val << index) | ~mask;
@@ -205,8 +206,8 @@ main(int argc, char const *argv[])
 	printf("> Set bits (0x0000000F): %x\n", vgetbits(data_1, 0, 8));
 
 	unsigned int data_2[2] = {0xABCD1234, 0xFFFFFFEC};
-	
-	
+
+
 	printf("2:\tGet bits: %x\n", vgetbits(data_2, 29, 8));
 	vsetbits(data_2, 29, 8, 0x0000000F);
 	printf("> Set bits (0x0000000F): %x\n", vgetbits(data_2, 29, 8));
